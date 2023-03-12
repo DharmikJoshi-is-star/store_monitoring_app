@@ -25,7 +25,7 @@ def get_report(report_id=None):
             resp = StatusesEnum.STATUS_1.get_resp_obj
         elif report["status"] == StatusesEnum.STATUS_0.get_status:
             resp = StatusesEnum.STATUS_0.get_resp_obj
-            resp["resport_file"] = report["report_path"]
+            resp["report_file"] = report["report_path"]
             with open(report["report_path"], 'rb') as binary_file:
                 binary_file_data = binary_file.read()
                 base64_encoded_data = base64.b64encode(binary_file_data)
