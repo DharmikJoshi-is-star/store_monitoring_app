@@ -1,7 +1,8 @@
 # store_monitoring_app
 
+<h2> API SPECIFICATION </h2>
 
-<h3>Trigger Report generation<h3> 
+<h5>Trigger Report generation</h5> 
 <br>
 Method: POST
 URL: http://localhost:5000/api/v1/trigger_report
@@ -23,7 +24,7 @@ report_id: "refernce unique id to retreive the status of report"
 
 <hr>
 
-<h3>Get Report status</h3>
+<h5>Get Report status</h5>
 
 <br>
 
@@ -50,7 +51,7 @@ report_status: Running/Complete
 report_file: Generate report file path on local system can also used to upload on thrird party like s3 bucket
 
 
-======Testing observations======
+<h2> TESTING OBSERVATIONS </h2>
 
 for top 10 stores report is getting generate in 10 seconds
 and total unqiue store ids present in the store_business_time csv file is "11116"
