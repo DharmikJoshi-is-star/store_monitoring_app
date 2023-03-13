@@ -4,10 +4,10 @@
 API 1: To Trigger Report generation 
 Method: POST
 URL: http://localhost:5000/api/v1/trigger_report
-CURL: curl --location --request POST 'http://localhost:5000/api/v1/trigger_report'
+CURL: curl --location --request POST 'http://localhost:5000/api/v1/trigger_report?no_stores=10'
 
 Sample Request:-
-curl --location --request POST 'http://localhost:5000/api/v1/trigger_report'
+curl --location --request POST 'http://localhost:5000/api/v1/trigger_report?no_stores=10'
 
 Response:-
 {
@@ -15,6 +15,7 @@ Response:-
 }
 
 API Spec:-
+Request Params=>  no_stores: to generate report for first n stores this params can be send
 
 Response=> 
 report_id: "refernce unique id to retreive the status of report"
@@ -46,3 +47,10 @@ Response=>
 report_file_in_base64: csv generated report file in base64 format
 report_status: Running/Complete
 report_file: Generate report file path on local system can also used to upload on thrird party like s3 bucket
+
+
+****Testing observations****:-
+
+for top 10 stores report is getting generate in 10 seconds
+and total unqiue store ids present in the store_business_time csv file is "11116"
+So to generate report for all stores can take upto 4/5 hours of time.

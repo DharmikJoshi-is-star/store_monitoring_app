@@ -4,11 +4,12 @@ import threading
 from src.services import report_generator_service
 import base64
 
-def generate_report():
+def generate_report(args):
+    no_stores = args.get("no_stores", default=-1, type=int)
     report = store_report_dao.get_report_schema()
     store_report_dao.save(report=report)
     threading.Thread(target=report_generator_service.__generate_all_store_report, args=(
-        report, ), name=report["report_id"]).start()
+        report, no_stores, ), name=report["report_id"]).start()
     #report_generator_service.__generate_all_store_report(report)
     return {"report_id": report["report_id"]}
 

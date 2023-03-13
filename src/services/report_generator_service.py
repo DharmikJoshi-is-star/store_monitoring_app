@@ -3,25 +3,24 @@ from src.constants.enums import StatusesEnum
 from src.utils import util
 import pandas as pd
 import logging
+from multiprocessing import Pool
+
+
 
 logger = logging.getLogger("report_generator_service")
 
-def __generate_all_store_report(store_report=None):
+def __generate_all_store_report(store_report=None, no_stores=-1):
     report_status = None
     report_path = "/tmp/" + store_report["report_id"] + ".csv"
-    logger.info("TESTTTTTT")
-    all_store_ids = store_business_time_dao.all_store_ids()
-    count = 0
+    all_store_ids = list(store_business_time_dao.all_store_ids())
     store_report_list = []
     try:
-        for store_id in all_store_ids:
-            logger.info("Process started!")
-            # threading.Thread(target=find_last_hour_uptime_and_downtime_by_store_id,args=(store_id,), name=store_id).start()
-            store_report_list.append(__generate_store_report(store_id))
-            # generate_store_report("1000385412041408565")
-            count += 1
-            if (count == 5):
-                break
+        print(len(list(all_store_ids)))
+        if (no_stores is not -1 and no_stores is not None):
+            all_store_ids = all_store_ids[0:no_stores]
+        print(len(list(all_store_ids)))
+        with Pool() as pool:
+            store_report_list = pool.map(__generate_store_report, all_store_ids)
         
         logger.info("Store Report generated successfully!")
 

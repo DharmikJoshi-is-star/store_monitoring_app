@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 import os
 from src.services import report_service
 
@@ -13,13 +13,12 @@ def index():
 
 @app.route("/api/v1/trigger_report", methods=['POST'])
 def generate_report():
-    return jsonify(report_service.generate_report())
+    args = request.args
+    return jsonify(report_service.generate_report(args))
 
 @app.route("/api/v1/get_report/<report_id>")
 def get_report(report_id):
     return jsonify(report_service.get_report(report_id))
     
-
-
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=ENV_PORT, debug=True)

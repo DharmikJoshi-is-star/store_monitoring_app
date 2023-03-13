@@ -33,3 +33,6 @@ def business_time_in_timezone(date, start_time, end_time, store_timezone_str):
     start_date_time = store_timezone.localize(start_date_time)
     end_date_time = store_timezone.localize(end_date_time)
     return start_date_time, end_date_time
+
+def get_current_datetime():
+    return datetime.now()
