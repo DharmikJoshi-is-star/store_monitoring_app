@@ -1,7 +1,8 @@
 # store_monitoring_app
 
 
-API 1: To Trigger Report generation 
+<h3>Trigger Report generation<h3> 
+<br>
 Method: POST
 URL: http://localhost:5000/api/v1/trigger_report
 CURL: curl --location --request POST 'http://localhost:5000/api/v1/trigger_report?no_stores=10'
@@ -22,7 +23,10 @@ report_id: "refernce unique id to retreive the status of report"
 
 <hr>
 
-API 2: To Get status of the Report
+<h3>Get Report status</h3>
+
+<br>
+
 Method: GET
 URL: http://localhost:5000/api/v1/get_report/95e7af35-578c-42ef-8c0a-ae1744a3eb0a
 CURL: curl --location 'http://localhost:5000/api/v1/get_report/95e7af35-578c-42ef-8c0a-ae1744a3eb0a'
@@ -37,9 +41,6 @@ Response:-
     "report_file": "/tmp/95e7af35-578c-42ef-8c0a-ae1744a3eb0a.csv"
 }
 
-
-API Spec:-
-
 Request:=> 
 report-id(Request param): unique id to be passed to get report status 
 
@@ -49,7 +50,7 @@ report_status: Running/Complete
 report_file: Generate report file path on local system can also used to upload on thrird party like s3 bucket
 
 
-****Testing observations****:-
+======Testing observations======
 
 for top 10 stores report is getting generate in 10 seconds
 and total unqiue store ids present in the store_business_time csv file is "11116"
