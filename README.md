@@ -2,7 +2,7 @@
 
 <h2> API SPECIFICATION </h2>
 
-<h5>Trigger Report generation</h5> 
+<h3>TRIGGER REPORT GENERATION</h3> 
 <br>
 Method: POST
 URL: http://localhost:5000/api/v1/trigger_report
@@ -24,7 +24,7 @@ report_id: "refernce unique id to retreive the status of report"
 
 <hr>
 
-<h5>Get Report status</h5>
+<h3>GET REPORT STATUS</h3>
 
 <br>
 
